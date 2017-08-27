@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Star Wars RPG</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+	<script
+  		src="https://code.jquery.com/jquery-3.2.1.slim.js"
+  		integrity="sha256-tA8y0XqiwnpwmOIl3SGAcFl2RvxHjA8qp0+1uCGmRmg="
+  		crossorigin="anonymous" defer>
+  	</script>
+	<script src="assets/javascript/game.js" defer></script>
+
+</head>
+<body class="view">
+	<div class="container">
+		<div class="row">
+			<div class = "col-sm-4 col-sm-offset-8">
+				<h1 class = "lead" style="color: #ffffff"> Star Wars RPG!</h1>
+			</div>
+		</div>
+		<div class="row">
+			
+				<h1 class="lead" style="color:#ffffff">Your Character</h1>
+			
+		</div>
+		<div class="row" id="character-section">
+			<p>characters go here</p>
+			<div class="col-sm-2 character" id="character-1">
+				<div id="leia" class="text-center">
+					<p>Health:<span id="leiasHealth"></span><p>
+					<img class="img-responsive" src="assets/images/leia.jpg">
+				</div>
+			</div>
+			<div class="col-sm-2 character" id="character-2" >
+				<div id="octopusGuy" class="text-center">
+					<p>Health:<span id="octopusGuysHealth"></span><p>
+					<img class="img-responsive" src="assets/images/octopusguy.jpg">
+				</div>
+			</div>
+			<div class="col-sm-2 character" id="character-3">
+				<div id="darthVader" class="text-center">
+					<p>Health:<span id="darthVadersHealth"></span><p>
+					<img class="img-responsive" src="assets/images/darthvader.jpg">
+				</div>
+			</div>
+			<div class="col-sm-2 character" id="character-4">
+				<div id="chewbacca" class="text-center">
+					<p>Health:<span id="chewbaccasHealth"></span><p>
+					<img class="img-responsive" src="assets/images/chewbacca.jpg">
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<h1 class="lead" style="color:#ffffff">Enemies Available To Attack
+			</h1>
+		</div>
+		<div class="row" id="enemies-section">
+			<p>enemies go here</p>
+			<div class="col-sm-2 enemy" id="enemy-1">
+			</div>
+			<div class="col-sm-2 enemy" id="enemy-2">
+			</div>
+			<div class="col-sm-2 enemy" id="enemy-3">
+			</div>
+
+		</div>
+		<div class="row" id="fight-section">
+			<h1 class="lead" style="color:#ffffff">Fight Section</h1>
+			<button class="btn btn-default " aria-hidden="true">
+				<p>Attack!</p>
+				<span class="glyphicon glyphicon-flash">
+				</span>
+			</button>
+		</div>
+		<div class="row">
+			<h1 class="lead" style="color:#ffffff">Defender
+			</h1>
+		</div>
+		<div class="row" id="defender-section">
+			<p>defender gets put down here during the fight</p>
+			<div class="col-sm-2" id="defender">
+			</div>
+		</div>
+	</div>
+</body>
+</html>
