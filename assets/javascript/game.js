@@ -73,6 +73,7 @@ $(document).ready(function(){
 		$("#character-1").css("border","none")
 		$("#character-2").css("border","none")
 		$("#character-3").css("border","none")
+		$("#character-4").css("border","none")
 		$("#enemy-1").css("background-color", "transparent")
 		$("#enemy-2").css("background-color", "transparent")
 		$("#enemy-3").css("background-color", "transparent")
