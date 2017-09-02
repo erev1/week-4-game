@@ -15,3 +15,8 @@ body,
 .character, .enemy, #defender {
 	color: white;
 }
+
+#first-line-game-status, #second-line-game-status {
+	color: #ffffff;
+	font-size: 2em;
+}

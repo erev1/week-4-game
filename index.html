@@ -26,30 +26,30 @@
 			
 		</div>
 		<div class="row" id="character-section">
-			<p>characters go here</p>
+			
 			<div class="col-sm-2 character" id="character-1">
-				<div id="leia" class="text-center">
+<!-- 				<div id="leia" class="text-center characterInner">
 					<p>Health:<span id="leiasHealth"></span><p>
-					<img class="img-responsive" src="assets/images/leia.jpg">
-				</div>
+					<img class="img-responsive" id="leiaImg">
+				</div> -->
 			</div>
 			<div class="col-sm-2 character" id="character-2" >
-				<div id="octopusGuy" class="text-center">
+<!-- 				<div id="octopusGuy" class="text-center characterInner">
 					<p>Health:<span id="octopusGuysHealth"></span><p>
-					<img class="img-responsive" src="assets/images/octopusguy.jpg">
-				</div>
+					<img class="img-responsive" id="octopusGuyImg">
+				</div> -->
 			</div>
 			<div class="col-sm-2 character" id="character-3">
-				<div id="darthVader" class="text-center">
+<!-- 				<div id="darthVader" class="text-center characterInner">
 					<p>Health:<span id="darthVadersHealth"></span><p>
-					<img class="img-responsive" src="assets/images/darthvader.jpg">
-				</div>
+					<img class="img-responsive" id="darthVaderImg">
+				</div> -->
 			</div>
 			<div class="col-sm-2 character" id="character-4">
-				<div id="chewbacca" class="text-center">
+<!-- 				<div id="chewbacca" class="text-center characterInner">
 					<p>Health:<span id="chewbaccasHealth"></span><p>
-					<img class="img-responsive" src="assets/images/chewbacca.jpg">
-				</div>
+					<img class="img-responsive" id="chewbaccaImg">
+				</div> -->
 			</div>
 		</div>
 		<div class="row">
@@ -57,7 +57,7 @@
 			</h1>
 		</div>
 		<div class="row" id="enemies-section">
-			<p>enemies go here</p>
+			
 			<div class="col-sm-2 enemy" id="enemy-1">
 			</div>
 			<div class="col-sm-2 enemy" id="enemy-2">
@@ -68,7 +68,7 @@
 		</div>
 		<div class="row" id="fight-section">
 			<h1 class="lead" style="color:#ffffff">Fight Section</h1>
-			<button class="btn btn-default " aria-hidden="true">
+			<button class="btn btn-default attack" aria-hidden="true">
 				<p>Attack!</p>
 				<span class="glyphicon glyphicon-flash">
 				</span>
@@ -79,10 +79,20 @@
 			</h1>
 		</div>
 		<div class="row" id="defender-section">
-			<p>defender gets put down here during the fight</p>
-			<div class="col-sm-2" id="defender">
+			
+			<div class="col-sm-4 text-right" id="defender">
 			</div>
+			<div class="col-sm-8">
+				<div class="row">
+					<p id="first-line-game-status"></p>
+					<p id="second-line-game-status"></p>
+				</div>
+				<div class="row" id="restart">
+				</div>
+			</div>
+
 		</div>
+
 	</div>
 </body>
 </html>
