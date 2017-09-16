@@ -1,3 +1,4 @@
+// Nice job putting everything insude the document ready block 👌
 $(document).ready(function(){
 
 
@@ -30,24 +31,6 @@ $(document).ready(function(){
 		characterRepo.chewbacca.health = characterRepo.chewbacca.startHealth
 	}
 
-	resetHealth()
-
-	$("#character-1").html(characterRepo.leia.html)
-	$("#character-2").html(characterRepo.octopusGuy.html)
-	$("#character-3").html(characterRepo.darthVader.html)
-	$("#character-4").html(characterRepo.chewbacca.html)
-
-
-
-	$("#leiasHealth").text(characterRepo.leia.health)
-	$("#octopusGuysHealth").text(characterRepo.octopusGuy.health)
-	$("#darthVadersHealth").text(characterRepo.darthVader.health)
-	$("#chewbaccasHealth").text(characterRepo.chewbacca.health)
-	$("#leiaImg").attr("src", characterRepo.leia.img)
-	$("#octopusGuyImg").attr("src", characterRepo.octopusGuy.img)
-	$("#darthVaderImg").attr("src", characterRepo.darthVader.img)
-	$("#chewbaccaImg").attr("src", characterRepo.chewbacca.img)
-
 
 	var characterMap = {
 		"#character-1": "leia",
@@ -61,51 +44,53 @@ $(document).ready(function(){
 		"#enemy-2": enemy2Name,
 		"#enemy-3": enemy3Name,
 	}
-	
+
+	restart()
+	// All of this logic was being duplicated in your restart function, so in an effort to DRY
+	// things up a bit you can simply call restart!
+
 	function restart() {
+		allCharacterDivs = ["#character-1", "#character-2", "#character-3", "#character-4"]
+		allEnemyDivs = ["#enemy-1", "#enemy-2", "#enemy-3"]
+
 		$("#first-line-game-status").empty()
 		$("#second-line-game-status").empty()
 		$("#restart").empty()
 		$("#defender").empty()
-		$("#enemy-1").empty()
-		$("#enemy-2").empty()
-		$("#enemy-3").empty()
-		$("#character-1").css("border","none")
-		$("#character-2").css("border","none")
-		$("#character-3").css("border","none")
-		$("#character-4").css("border","none")
-		$("#enemy-1").css("background-color", "transparent")
-		$("#enemy-2").css("background-color", "transparent")
-		$("#enemy-3").css("background-color", "transparent")
 
-		$("#character-1").html(characterRepo.leia.html)
-		$("#character-2").html(characterRepo.octopusGuy.html)
-		$("#character-3").html(characterRepo.darthVader.html)
-		$("#character-4").html(characterRepo.chewbacca.html)
+		// this code is somewhat repetitive, so I'd suggest looping over your div arrays
+		// and putting the logic inside the loop. That way you only need to write it once.
 
-		allCharacterDivs = ["#character-1", "#character-2", "#character-3", "#character-4"]
-		allEnemyDivs = ["#enemy-1", "#enemy-2", "#enemy-3"]
+		allEnemyDivs.forEach(function(divId) {
+			$(divId).empty()
+			$(divId).css("background-color", "transparent")
+		})
+
+		resetHealth()
+
+		allCharacterDivs.forEach(function(divId) {
+			var charName = characterMap[ divId ]
+			$(divId).css("border","none")
+			$(divId).html(characterRepo[ charName ].html)
+			$("#" + charName + "sHealth").text(characterRepo[ charName ].health)
+			$("#" + charName + "Img").attr("src", characterRepo[ charName ].img)
+		})
+
 		antagonist = undefined
 		protagonist = undefined
 		win = false
 
-		resetHealth()
-
-		$("#leiasHealth").text(characterRepo.leia.health)
-		$("#octopusGuysHealth").text(characterRepo.octopusGuy.health)
-		$("#darthVadersHealth").text(characterRepo.darthVader.health)
-		$("#chewbaccasHealth").text(characterRepo.chewbacca.health)
-
-
-		$("#leiaImg").attr("src", characterRepo.leia.img)
-		$("#octopusGuyImg").attr("src", characterRepo.octopusGuy.img)
-		$("#darthVaderImg").attr("src", characterRepo.darthVader.img)
-		$("#chewbaccaImg").attr("src", characterRepo.chewbacca.img)
 	}
 
 
 	$(".character").on("click", function(){
-		if (protagonist != undefined) {
+		// You'll want to get in the habit of using triple equals instead of double.
+		// For checking inequality triple equals is the !== and double equals is !=.
+		// This is because double equals does type coercion before checking values, you can
+		// sometime have the check return true when you wouldn't expect it to
+		// and that can cause some really confusing bugs 🐛
+
+		if (protagonist !== undefined) {
 			return
 		}
 		$(this).css("border","2px solid green")
@@ -118,38 +103,14 @@ $(document).ready(function(){
 
 		// console.log(allCharacterDivs)
 
-		var enemy1 = ("#" + $(allCharacterDivs[0]).attr("id"))
-		var enemy2 = ("#" + $(allCharacterDivs[1]).attr("id"))
-		var enemy3 = ("#" + $(allCharacterDivs[2]).attr("id"))
+		allCharacterDivs.forEach(function(divId, index) {
+			var enemyId = "#enemy-" + (index + 1)
+			secondCharacterMap[ enemyId ] = characterMap[ divId ]
+			$(enemyId).append( $(divId).html() )
+			$(enemyId).css("background-color", "red")
+			$(divId).empty()
+		})
 
-		// console.log(enemy1)
-
-		enemy1Name = characterMap[enemy1]
-		enemy2Name = characterMap[enemy2]
-		enemy3Name = characterMap[enemy3]
-
-		// console.log("enemy 1 name:" + enemy1Name)
-		// console.log("enemy 2 name:" + enemy2Name)
-		// console.log("enemy 3 name:" + enemy3Name)
-
-		secondCharacterMap["#enemy-1"] = enemy1Name
-		secondCharacterMap["#enemy-2"] = enemy2Name
-		secondCharacterMap["#enemy-3"] = enemy3Name
-
-		$("#enemy-1").append($(allCharacterDivs[0]).html())
-		$("#enemy-2").append($(allCharacterDivs[1]).html())
-		$("#enemy-3").append($(allCharacterDivs[2]).html())
-
-
-		$("#enemy-1").css("background-color", "red")
-		$("#enemy-2").css("background-color", "red")
-		$("#enemy-3").css("background-color", "red")
-
-		$(allCharacterDivs[0]).empty()
-		$(allCharacterDivs[1]).empty()
-		$(allCharacterDivs[2]).empty()
-
-		// console.log("2nd character map enemy 1:" + (secondCharacterMap["#enemy-1"]))
 	});
 
 	$(".enemy").on("click", function(){
